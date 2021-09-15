@@ -1,0 +1,22 @@
+#bloc-page{
+	width: 70%;
+	margin: auto;
+	font-family: Helvetica, sans-serif;
+}
+
+/* HEADER */
+
+.header{
+	background-color: dimgray;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100px;
+}
+
+.logo{
+	color: white;
+	text-decoration: none;
+	margin-left: 20px;
+	font-size: 1.2em;
+}
