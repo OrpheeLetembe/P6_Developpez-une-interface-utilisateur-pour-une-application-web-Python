@@ -64,3 +64,38 @@
 	margin-left: 20px;
 	cursor: pointer;
 }
+
+/*POPUP*/
+
+#popup-movie{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	border: black 2px solid;
+	background-color: dimgray;
+	/*position: absolute;*/
+
+}
+
+#popup-movie__img{
+	width: 20%;
+}
+
+#popup-movie__detail{
+	width: 50%;
+}
+
+#popup-movie__btn{
+	width: 60px;
+	height: 20px;
+	border-radius: 20px;
+	background-color: red;
+	color: white;
+	border: none;
+	font-weight: bold;
+}
+
+#popup-movie__detail li{
+	list-style: none;
+	font-size: 0.9em;
+	/*margin-left: 20px;*/
