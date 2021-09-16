@@ -11,6 +11,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
 	height: 100px;
 }
 
@@ -32,11 +33,18 @@
 	margin-left: 20px;
 }
 
+.nav li :hover{
+	font-size: 1.6em;
+}
+
 .nav a{
 	color: white;
 	text-decoration: none;
 	font-size: 1.2em;
+	
 }
+
+
 
 /* BEST MOVIE SECTION */
 
@@ -51,10 +59,11 @@
 #best-movie__info{
 	margin-bottom: 50px;
 	width: 33%;
+
 }
 
 #best-movie__btn{
-	width: 60px;
+	width: 70px;
 	height: 20px;
 	border-radius: 20px;
 	border: none;
@@ -67,35 +76,57 @@
 
 /*POPUP*/
 
+
+#overlay{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	display: none;
+
+}
+
 #popup-movie{
+	position: absolute;
 	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
+	justify-content: space-between;
+	/*flex-wrap: wrap;
+	/*top: -10000px;*/
+	/*display: none;*/
 	border: black 2px solid;
-	background-color: dimgray;
-	/*position: absolute;*/
-
-}
-
-#popup-movie__img{
-	width: 20%;
-}
-
-#popup-movie__detail{
+	background-color: whitesmoke;
 	width: 50%;
 }
 
-#popup-movie__btn{
-	width: 60px;
-	height: 20px;
-	border-radius: 20px;
-	background-color: red;
-	color: white;
-	border: none;
-	font-weight: bold;
+
+#popup-movie__img{
+	margin: 20px 10px;
+	width: 100%;
+	
 }
 
 #popup-movie__detail li{
 	list-style: none;
 	font-size: 0.9em;
+	padding-top: 10px;
+}
+
+#popup-movie__title{
+	font-weight: bold;
+	font-size: 0.2em;
+}
+
+#popup-movie__btn{
+	width: 60px;
+	height: 20px;
+	background-color: red;
+	color: white;
+	border: none;
+	font-weight: bold;
 	/*margin-left: 20px;*/
+	margin-bottom: 20px;
+	
+
+

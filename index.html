@@ -18,19 +18,20 @@
 		<section id="best-movie">
 			<div id="best-movie__info">
 				<h3 id="best-movie__title"></h3>
-				<button id="best-movie__btn">Play</button>
+				<button id="best-movie__btn" onclick="bestMoviePopup()">Play</button>
 				<p id="best-movie__abstract"></p>
 			</div>
 			<img id="best-movie__img"  src="" alt="best movie image">
 		</section>
-		<section id="popup-movie">
+		<div id="overlay">
+			<div id="popup-movie">
 			<img id="popup-movie__img" src="" alt="Movie image">
 			<ul id="popup-movie__detail">
 				<li id="popup-movie__title"></li>
 				<li id="popup-movie__abstract"></li>
 				<li id="popup-movie__genre">Genres :</li>
 				<li id="popup-movie__date">Date published :</li>
-				<li id="popup-movie__rate">Rated :</li>
+				<li id="popup-movie__rated">Rated :</li>
 				<li id="popup-movie__imdb">Imdb score</li>
 				<li id="popup-movie__director">Directors :</li>
 				<li id="popup-movie__actors">Actors :</li>
@@ -38,8 +39,11 @@
 				<li id="popup-movie__country">Countries :</li>
 				<li id="popup-movie__box">Box office :</li>
 			</ul>
-			<button id="popup-movie__btn"></button>
-		</section>
+			<button id="popup-movie__btn" onclick="closePopup()">X</button>
+		</div>
+			
+		</div>
+		
 	</div>
 
 <script type="text/javascript" src="main.js"></script>
