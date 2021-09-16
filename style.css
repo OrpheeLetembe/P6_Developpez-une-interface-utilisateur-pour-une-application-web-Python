@@ -1,5 +1,5 @@
 #bloc-page{
-	width: 70%;
+	width: 60%;
 	margin: auto;
 	font-family: Helvetica, sans-serif;
 }
@@ -7,11 +7,10 @@
 /* HEADER */
 
 .header{
-	background-color: dimgray;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	flex-wrap: wrap;
+	background-color: dimgray;
 	height: 100px;
 }
 
@@ -31,10 +30,12 @@
 .nav li{
 	list-style: none;
 	margin-left: 20px;
+
 }
 
 .nav li :hover{
-	font-size: 1.6em;
+	background-color: white;
+	color: dimgray;
 }
 
 .nav a{
@@ -59,6 +60,7 @@
 #best-movie__info{
 	margin-bottom: 50px;
 	width: 33%;
+	font-size: 1.2em;
 
 }
 
@@ -125,8 +127,59 @@
 	color: white;
 	border: none;
 	font-weight: bold;
-	/*margin-left: 20px;*/
 	margin-bottom: 20px;
 	
+}
 
 
+@media screen and (max-width: 800px){
+
+	.nav{
+		flex-direction: column;
+	}
+}
+
+/*TOP RATED*/
+
+
+#top-rated{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-top: 40px;
+	
+}
+
+#top-rated_img{
+	display: flex;
+	/*justify-content: space-evenly;*/
+	align-items: center;
+	overflow: hidden;
+	width: 89%;
+	
+}
+
+
+.movie-img{
+	cursor: pointer;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 300px;
+}
+
+#top-rated_btnL,
+#top-rated_btnR{
+	font-weight: bold;
+	font-size: 0.9em;
+	cursor: pointer;
+}
+
+#top-rated_btnL{
+	margin-right: 10px
+
+}
+
+#top-rated_btnR{
+	margin-left: 10px;
+
+}
