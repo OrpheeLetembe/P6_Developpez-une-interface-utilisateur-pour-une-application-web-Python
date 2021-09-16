@@ -144,34 +144,36 @@
 
 #top-rated{
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-items: center;
-	margin-top: 40px;
+	margin-top: 50px;
 	
 }
 
+
 #top-rated_img{
 	display: flex;
-	/*justify-content: space-evenly;*/
+	justify-content: space-between;
 	align-items: center;
 	overflow: hidden;
-	width: 89%;
+	width: 85%;
 	
 }
 
 
 .movie-img{
 	cursor: pointer;
-	margin-left: 10px;
-	margin-right: 10px;
-	width: 300px;
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 100%;
 }
 
-#top-rated_btnL,
-#top-rated_btnR{
+.movie-btn{
+	background-color: white;
 	font-weight: bold;
-	font-size: 0.9em;
+	font-size: 1.2em;
 	cursor: pointer;
+	border: none;
 }
 
 #top-rated_btnL{
