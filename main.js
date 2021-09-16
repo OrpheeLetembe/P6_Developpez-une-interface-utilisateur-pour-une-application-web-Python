@@ -47,9 +47,11 @@ function httpRequest(id, traitement){
 		if (this.readyState === 4 && this.status === 200){
 			let data = xhr.response;
 			traitement(data);
-			}
+		} 
+
 		
-		}
+	}
+		
 
 	xhr.open("GET","http://localhost:8000/api/v1/titles/" + id, true );
 	xhr.responseType = "json";
@@ -77,11 +79,10 @@ function getBestMovieData(data){
 	bestMovieImg.setAttribute("src", bestMovieData[0].image_url);
 	let bestMovieId = bestMovieData[0].id;
 
-	let bestMovieDetail = httpRequest(bestMovieId, getbestMovieAbstract);
+	httpRequest(bestMovieId, getbestMovieAbstract);
 }
 
-
-let bestMovieInfos = httpRequest(bestMovieScore, getBestMovieData)
+httpRequest(bestMovieScore, getBestMovieData);
 
 
 function getBestMovieId(data){
@@ -95,7 +96,7 @@ function getBestMovieId(data){
 
 function bestMoviePopup(){
 	openPopup("best-movie__btn");
-	let detail = httpRequest(bestMovieScore, getBestMovieId);
+	httpRequest(bestMovieScore, getBestMovieId);
 }
 
 // POPUP
@@ -143,7 +144,6 @@ function fillPopup(movie) {
     
 }
 
-
 function closePopup() {
     document.getElementById("overlay").style.display = "none";
     
@@ -152,19 +152,29 @@ function closePopup() {
 
 //TOP RATED MOVIES
 
+//add movies images
 
 function getData(data){
-	let movieData = data.results
+	let movieData = data.results;
 	let topRateDiv = document.getElementById("top-rated_img");
 	for (let i = 0; i < data.results.length; i++){
 		console.log(topRateDiv.length);
 		console.log(topRateDiv.children[i]);
-
 		topRateDiv.children[i].setAttribute("src", movieData[i + 1].image_url);
 
 	}
 	
+}
+
+httpRequest(bestMovieScore, getData);
+
+function getLastMovieImg(data){
+	let lastMovieImg = data.results;
+	let topRateDiv = document.getElementById("top-rated_img");
+	topRateDiv.children[3].setAttribute("src", lastMovieImg[0].image_url);
 
 }
 
-let MovieInfos = httpRequest(bestMovieScore, getData);
+httpRequest("?imdb_score=9.4", getLastMovieImg);
+
+
