@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"/>
 	<title>JustStreamIt</title>
@@ -15,14 +16,14 @@
 				<li><a href="#">Catégories</a></li>	
 			</ul>
 		</header>
-		<section id="best-movie">
+		<div id="best-movie">
 			<div id="best-movie__info">
 				<h3 id="best-movie__title"></h3>
 				<button id="best-movie__btn" onclick="bestMoviePopup()">Play</button>
 				<p id="best-movie__abstract"></p>
 			</div>
 			<img id="best-movie__img"  src="" alt="best movie image">
-		</section>
+		</div>
 		<div id="overlay">
 			<div id="popup-movie">
 			<img id="popup-movie__img" src="" alt="Movie image">
@@ -40,7 +41,21 @@
 				<li id="popup-movie__box">Box office :</li>
 			</ul>
 			<button id="popup-movie__btn" onclick="closePopup()">X</button>
+			</div>
+			
 		</div>
+		<div id="top-rated">
+			<button id="top-rated_btnL"><</button>
+			<div id="top-rated_img">
+				<img src="top-rated_img1" alt="Movie image">
+				<img src="top-rated_img2" alt="Movie image">
+				<img src="top-rated_img3" alt="Movie image">
+				<img src="top-rated_img4" alt="Movie image">
+				<img src="top-rated_img5" alt="Movie image">
+				<img src="top-rated_img6" alt="Movie image">
+				<img src="top-rated_img7" alt="Movie image">
+			</div>
+			<button id="top-rated_btnR">></button>
 			
 		</div>
 		
