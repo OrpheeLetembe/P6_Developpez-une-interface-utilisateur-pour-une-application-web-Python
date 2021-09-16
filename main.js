@@ -1,7 +1,47 @@
 // request function
 
+const getHttpRequest = function() {
+
+
+	let httpRequest = false;
+
+	if (window.XMLHttpRequest) {
+
+		httpRequest = new XMLHttpRequest();
+
+		if (httpRequest.overrideMimeType) {
+			httpRequest.overrideMimeType("text/xml");
+		}
+
+	}
+
+	else if (window.ActiveXObject){
+
+		try {
+			httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		}
+
+		catch (e){
+			try{
+				httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			catch (e){}
+		}
+	}
+
+	if (!httpRequest){
+		alert("Abandon :(Impossible de créer une instance XMLHTTP");
+
+		return false;
+	}
+
+
+    return httpRequest;
+}
+
+
 function httpRequest(id, traitement){
-	let xhr = new XMLHttpRequest();
+	let xhr = getHttpRequest(); //new XMLHttpRequest();
 
 	xhr.onreadystatechange = function(){
 		if (this.readyState === 4 && this.status === 200){
@@ -108,3 +148,23 @@ function closePopup() {
     document.getElementById("overlay").style.display = "none";
     
 }
+
+
+//TOP RATED MOVIES
+
+
+function getData(data){
+	let movieData = data.results
+	let topRateDiv = document.getElementById("top-rated_img");
+	for (let i = 0; i < data.results.length; i++){
+		console.log(topRateDiv.length);
+		console.log(topRateDiv.children[i]);
+
+		topRateDiv.children[i].setAttribute("src", movieData[i + 1].image_url);
+
+	}
+	
+
+}
+
+let MovieInfos = httpRequest(bestMovieScore, getData);
