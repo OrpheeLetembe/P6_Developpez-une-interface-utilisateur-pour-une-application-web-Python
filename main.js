@@ -40,23 +40,26 @@ const getHttpRequest = function() {
 }
 
 
-function httpRequest(id, traitement){
-	let xhr = getHttpRequest(); //new XMLHttpRequest();
+function httpRequest(id, functions){
+	let xhr = getHttpRequest(); 
 
 	xhr.onreadystatechange = function(){
 		if (this.readyState === 4 && this.status === 200){
 			let data = xhr.response;
-			traitement(data);
+			functions(data);
 		} 
 
-		
-	}
+	} 
 		
 
 	xhr.open("GET","http://localhost:8000/api/v1/titles/" + id, true );
 	xhr.responseType = "json";
 	xhr.send();
 }
+
+
+
+
 
 // BEST MOVIE
 
@@ -155,26 +158,86 @@ function closePopup() {
 //add movies images
 
 function getData(data){
+	//console.log(data);
 	let movieData = data.results;
-	let topRateDiv = document.getElementById("top-rated_img");
-	for (let i = 0; i < data.results.length; i++){
-		console.log(topRateDiv.length);
-		console.log(topRateDiv.children[i]);
-		topRateDiv.children[i].setAttribute("src", movieData[i + 1].image_url);
-
-	}
-	
+	getChildren(movieData, "top-rated_img_visible");
 }
 
 httpRequest(bestMovieScore, getData);
 
-function getLastMovieImg(data){
+function getChildren (data, id){
+	let elementParent = document.getElementById(id);
+	for (let i = 0; i < data.length - 1; i++){
+		elementParent.children[i].setAttribute("src", data[i + 1].image_url);
+	}
+
+}
+
+function getLastChildImg(data){
 	let lastMovieImg = data.results;
-	let topRateDiv = document.getElementById("top-rated_img");
+	let topRateDiv = document.getElementById("top-rated_img_visible");
 	topRateDiv.children[3].setAttribute("src", lastMovieImg[0].image_url);
 
 }
 
-httpRequest("?imdb_score=9.4", getLastMovieImg);
+httpRequest("?imdb_score=9.4", getLastChildImg);
+
+
+//EVENT CLICK RIGHT ARROW
+
+function getBtnId(btn){
+	const btnId = document.getElementById(btn);
+	return btnId;
+}
+
+
+const btnTopRatedR = getBtnId("top-rated_btnR")
+
+btnTopRatedR.addEventListener("click", e => {
+	const imagInvisible = document.getElementById("top-rated_img_invisible");
+	const imagVisible = document.getElementById("top-rated_img_visible");
+
+	console.log(imagVisible.style)
+
+	imagInvisible.style.display = "block";
+	imagVisible.style.display = "none";
+	btnTopRatedR.style.display = "none";
+
+	const btnTopRatedL = getBtnId("top-rated_btnL");
+	btnTopRatedL.style.display = "block";
+
+})
+
+//EVENT CLICK LEFT ARROW
+
+const btnTopRatedL = getBtnId("top-rated_btnL")
+
+btnTopRatedL.addEventListener("click", e => {
+	const imagInvisible = document.getElementById("top-rated_img_invisible");
+	const imagVisible = document.getElementById("top-rated_img_visible");
+
+	imagInvisible.style.display = "none";
+	imagVisible.style.display = "flex";
+	btnTopRatedL.style.display = "none";
+
+	const btnTopRatedR = getBtnId("top-rated_btnR");
+	btnTopRatedR.style.display = "block";
+
+	console.log(imagVisible);
+	console.log(imagVisible.style);
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
