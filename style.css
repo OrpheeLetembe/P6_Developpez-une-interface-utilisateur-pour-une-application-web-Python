@@ -148,6 +148,7 @@
 	justify-content: space-between;
 	align-items: flex-end;
 	margin-top: 20px;
+
 	
 }
 
@@ -219,6 +220,8 @@
 
 
 
-
+footer{
+	margin-top: 40px;
+}
 
 
