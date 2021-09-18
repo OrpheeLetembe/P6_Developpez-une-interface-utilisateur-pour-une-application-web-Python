@@ -117,8 +117,6 @@ function openPopup(){
 	
 	document.getElementById("overlay").style.display = "flex";
 	document.getElementById("overlay").style.zIndex = "1";
-	const pop = document.getElementById("popup-movie")
-	console.log(pop);
 
 	document.getElementById("popup-movie").style.top = 20 + "%" ;
 	document.getElementById("popup-movie").style.left = 20 + "%" ;
@@ -252,6 +250,7 @@ btnTopRatedL.addEventListener("click", e => {
 
 //ACTION
 
+//add movies images
 
 const actionMovieVisible = "?genre_contains=action&imdb_score_min=8&imdb_score_max=9";
 
@@ -286,6 +285,50 @@ btnActionL.addEventListener("click", e => {
 	leftClick("action_img_visible", "action_img_invisible", "action_btnL", "action_btnR");
 })
 	
+
+// COMEDY
+
+//add movies images
+
+const comedyMovieVisible = "?genre_contains=comedy&imdb_score_min=8&imdb_score_max=9";
+
+function getComedyMovieVisible(data){
+	let movieData = data.results;
+	addMoviesImg(movieData, "comedy_img_visible");
+}
+
+httpRequest(comedyMovieVisible, getComedyMovieVisible);
+
+
+function getComedyMovieInvisible(data){
+	let movieData = data.results;
+	addMoviesImg(movieData, "comedy_img_invisible");
+}
+
+//event click right arrow
+
+const comedyMovieInvisible = "?genre_contains=comedy&imdb_score_min=8&imdb_score_max=9&page=2"
+
+const btnComedyR = getBtnId("comedy_btnR")
+
+btnComedyR.addEventListener("click", e => {
+	rigthClick("comedy_img_visible", "comedy_img_invisible", "comedy_btnL", "comedy_btnR");
+	httpRequest(comedyMovieInvisible, getComedyMovieInvisible);
+})
+
+//event click left arrow
+
+const btnComedyL = getBtnId("comedy_btnL")
+
+btnComedyL.addEventListener("click", e => {
+	leftClick("comedy_img_visible", "comedy_img_invisible", "comedy_btnL", "comedy_btnR");
+})
+
+
+
+
+
+
 
 
 
