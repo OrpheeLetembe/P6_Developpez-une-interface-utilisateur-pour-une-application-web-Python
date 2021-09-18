@@ -105,7 +105,7 @@ function bestMoviePoppup(data) {
 
 
 bestMovieBtn.addEventListener("click", e => {
-	openPopup("best-movie__btn");
+	openPopup();
 	httpRequest(bestMovieScore, bestMoviePoppup);
 })
 
@@ -113,15 +113,15 @@ bestMovieBtn.addEventListener("click", e => {
 
 // POPUP
 
-function openPopup(id){
-	let getElementTop = document.getElementById(id).offsetTop;
-	let getElementLeft = document.getElementById(id).offsetLeft;
-
-	document.getElementById("overlay").style.display = "block";
+function openPopup(){
+	
+	document.getElementById("overlay").style.display = "flex";
 	document.getElementById("overlay").style.zIndex = "1";
+	const pop = document.getElementById("popup-movie")
+	console.log(pop);
 
-	document.getElementById("popup-movie").style.top = getElementTop + "px" ;
-	document.getElementById("popup-movie").style.left = getElementLeft + "px" ;
+	document.getElementById("popup-movie").style.top = 20 + "%" ;
+	document.getElementById("popup-movie").style.left = 20 + "%" ;
 
 
 }
@@ -163,87 +163,129 @@ function closePopup() {
 }
 
 
-//TOP RATED MOVIES
+//FUNCTION ADD MOVIES IMAGES
 
 function addMoviesImg(data, id){
-	//console.log(data);
 	let elementParent = document.getElementById(id);
-	//console.log(bestMovieImg)
 	for (let i = 0; i < data.length; i++){
 		elementParent.children[i].setAttribute("src", data[i].image_url);
 		elementParent.children[i].addEventListener("click", e => {
-			openPopup(elementParent.id);
-			httpRequest(data[i].id, fillPopup);
-
-
-			//fillPopup(elementParent.children[i]);
-			 //bestMovieTitle.innerHTML = document.getElementById(elementParent.id).offsetTop;
+			openPopup();
+			httpRequest(data[i].id, fillPopup);	
 		})
 	}
 		
 }
 
+//FUNCTION EVENT CLICK BUTTON
+
+function rigthClick(imagvisible, imaginvisible, btnL, btnR){
+
+	const imagVisible = document.getElementById(imagvisible);
+	const imagInvisible = document.getElementById(imaginvisible);
+
+	imagInvisible.style.display = "flex";
+	imagVisible.style.display = "none";
+
+	let movieBtnR = getBtnId(btnR);
+	movieBtnR.style.display = "none";
+
+	let movieBtnL = getBtnId(btnL);
+	movieBtnL.style.display = "block";
+}
+
+function leftClick(imagvisible, imaginvisible, btnL, btnR){
+
+	const imagVisible = document.getElementById(imagvisible);
+	const imagInvisible = document.getElementById(imaginvisible);
+
+	imagInvisible.style.display = "none";
+	imagVisible.style.display = "flex";
+
+	let movieBtnL = getBtnId(btnL);
+	movieBtnL.style.display = "none";
+
+
+	let movieBtnR = getBtnId(btnR);
+	movieBtnR.style.display = "block";
+}
+
+//TOP RATED MOVIES
+
 //add movies images
 
-function getMovieVisible(data){
+function getTopMovieVisible(data){
 	let movieData = data.results;
 	addMoviesImg(movieData, "top-rated_img_visible");
 }
 
 const topRatedMovieVisibleScore = "?imdb_score_min=9.3&imdb_score_max=9.6&page=2"
 
-httpRequest(topRatedMovieVisibleScore, getMovieVisible);
+httpRequest(topRatedMovieVisibleScore, getTopMovieVisible);
 
 
-
-//Event click right arrow
-
-function getMovieInvisible(data){
+function getTopMovieInvisible(data){
 	let movieData = data.results;
 	addMoviesImg(movieData, "top-rated_img_invisible");
 }
 
 const topRatedMovieInvisibleScore = "?imdb_score_min=9.3&imdb_score_max=9.6&page=3"
 
+//event click right arrow
+
 const btnTopRatedR = getBtnId("top-rated_btnR")
 
 btnTopRatedR.addEventListener("click", e => {
-	const imagInvisible = document.getElementById("top-rated_img_invisible");
-	const imagVisible = document.getElementById("top-rated_img_visible");
-
-	imagInvisible.style.display = "flex";
-	imagVisible.style.display = "none";
-	btnTopRatedR.style.display = "none";
-
-	httpRequest(topRatedMovieInvisibleScore, getMovieInvisible);
-
-	const btnTopRatedL = getBtnId("top-rated_btnL");
-	btnTopRatedL.style.display = "block";
-
-
+	rigthClick("top-rated_img_visible", "top-rated_img_invisible", "top-rated_btnL", "top-rated_btnR");
+	httpRequest(topRatedMovieInvisibleScore, getTopMovieInvisible);
 })
-
 
 
 //Event click left arrow
 
 const btnTopRatedL = getBtnId("top-rated_btnL")
 
-
-
 btnTopRatedL.addEventListener("click", e => {
-	const imagInvisible = document.getElementById("top-rated_img_invisible");
-	const imagVisible = document.getElementById("top-rated_img_visible");
-
-	imagInvisible.style.display = "none";
-	imagVisible.style.display = "flex";
-	btnTopRatedL.style.display = "none";
-
-
-	const btnTopRatedR = getBtnId("top-rated_btnR");
-	btnTopRatedR.style.display = "block";
-
+	leftClick("top-rated_img_visible", "top-rated_img_invisible", "top-rated_btnL", "top-rated_btnR");
+	
 })
+
+//ACTION
+
+
+const actionMovieVisible = "?genre_contains=action&imdb_score_min=8&imdb_score_max=9";
+
+function getActionMovieVisible(data){
+	let movieData = data.results;
+	addMoviesImg(movieData, "action_img_visible");
+}
+
+httpRequest(actionMovieVisible, getActionMovieVisible);
+
+
+const actionMovieInvisible = "?genre_contains=action&imdb_score_min=8&imdb_score_max=9&page=2"
+
+function getActionMovieInvisible(data){
+	let movieData = data.results;
+	addMoviesImg(movieData, "action_img_invisible");
+}
+ //event click right arrow
+
+const btnActionR = getBtnId("action_btnR")
+
+btnActionR.addEventListener("click", e => {
+	rigthClick("action_img_visible", "action_img_invisible", "action_btnL", "action_btnR");
+	httpRequest(actionMovieInvisible, getActionMovieInvisible);
+})
+
+ //event click left arrow
+
+const btnActionL = getBtnId("action_btnL")
+
+btnActionL.addEventListener("click", e => {
+	leftClick("action_img_visible", "action_img_invisible", "action_btnL", "action_btnR");
+})
+	
 
 
 

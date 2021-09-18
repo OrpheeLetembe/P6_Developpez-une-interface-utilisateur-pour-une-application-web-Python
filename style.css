@@ -14,6 +14,7 @@
 	justify-content: space-between;
 	align-items: center;
 	background-color: dimgray;
+	margin-bottom: 20px;
 	border: black 1 solid;
 	height: 100px;
 }
@@ -48,6 +49,12 @@
 	
 }
 
+@media screen and (max-width: 800px){
+
+	.nav{
+		flex-direction: column;
+	}
+}
 
 
 /* BEST MOVIE SECTION */
@@ -134,19 +141,9 @@
 }
 
 
-@media screen and (max-width: 800px){
-
-	.nav{
-		flex-direction: column;
-	}
-}
 
 
-
-/*TOP RATED*/
-
-
-.category{
+.title{
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
@@ -154,8 +151,7 @@
 	
 }
 
-
-#top-rated{
+.category{
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -164,8 +160,17 @@
 	
 }
 
+.btnL{
+	margin-right: 10px;
+	display: none;
+}
 
-#top-rated_img{
+.btnR{
+	margin-left: 10px;
+	
+}
+
+.container{
 	display: flex;
 	/*justify-content: space-evenly;*/
 	align-items: center;
@@ -173,9 +178,8 @@
 	width: 85%;
 	
 }
-
-#top-rated_img_invisible,
-#top-rated_img_visible{
+.img_visible,
+.img_invisible{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -184,8 +188,7 @@
 }
 
 
-
-#top-rated_img_invisible{
+.img_invisible{
 	display: none;
 }
 
@@ -214,14 +217,8 @@
 	background-color: dimgray;
 }
 
-#top-rated_btnL{
-	margin-right: 10px;
-	display: none;
 
-}
 
-#top-rated_btnR{
-	margin-left: 10px;
-	
 
-}
+
+
