@@ -326,6 +326,46 @@ btnComedyL.addEventListener("click", e => {
 
 
 
+// ROMANCE
+
+
+//add movies images
+
+const romanceMovieVisible = "?genre_contains=romance&imdb_score_min=8&imdb_score_max=9";
+
+function getRomanceMovieVisible(data){
+	let movieData = data.results;
+	addMoviesImg(movieData, "romance_img_visible");
+}
+
+httpRequest(romanceMovieVisible, getRomanceMovieVisible);
+
+
+function getRomanceMovieInvisible(data){
+	let movieData = data.results;
+	addMoviesImg(movieData, "romance_img_invisible");
+}
+
+//event click right arrow
+
+const romanceMovieInvisible = "?genre_contains=romance&imdb_score_min=8&imdb_score_max=9&page=2"
+
+const btnRomanceR = getBtnId("romance_btnR")
+
+btnRomanceR.addEventListener("click", e => {
+	rigthClick("romance_img_visible", "romance_img_invisible", "romance_btnL", "romance_btnR");
+	httpRequest(romanceMovieInvisible, getRomanceMovieInvisible);
+})
+
+const btnRomanceL = getBtnId("romance_btnL")
+
+btnRomanceL.addEventListener("click", e => {
+	leftClick("romance_img_visible", "romance_img_invisible", "romance_btnL", "romance_btnR");
+})
+
+
+
+
 
 
 
