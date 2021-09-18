@@ -4,7 +4,8 @@
 	width: 60%;
 	margin: auto;
 	font-family: Helvetica, sans-serif;
-	/*background-color: black;*/
+
+
 }
 
 /* HEADER */
@@ -13,10 +14,11 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: dimgray;
+	background-color: #2C3E50 ;
 	margin-bottom: 20px;
 	border: black 1 solid;
 	height: 100px;
+	z-index: 4;
 }
 
 .logo{
@@ -49,12 +51,6 @@
 	
 }
 
-@media screen and (max-width: 800px){
-
-	.nav{
-		flex-direction: column;
-	}
-}
 
 
 /* BEST MOVIE SECTION */
@@ -78,9 +74,9 @@
 	height: 20px;
 	border-radius: 20px;
 	border: none;
-	color: white;
+	color: #FFFFFF ;
 	font-weight: bold;
-	background-color: red;
+	background-color: #FF0033;
 	margin-left: 20px;
 	cursor: pointer;
 }
@@ -107,7 +103,7 @@
 	/*top: -10000px;*/
 	/*display: none;*/
 	border: black 2px solid;
-	background-color: whitesmoke;
+	background-color: #F0F3F4;
 	width: 50%;
 }
 
@@ -132,16 +128,13 @@
 #popup-movie__btn{
 	width: 60px;
 	height: 20px;
-	background-color: red;
-	color: white;
+	background-color: #FF0033;
+	color:#FFFFFF ;
 	border: none;
 	font-weight: bold;
 	margin-bottom: 20px;
 	
 }
-
-
-
 
 .title{
 	display: flex;
@@ -173,12 +166,12 @@
 
 .container{
 	display: flex;
-	/*justify-content: space-evenly;*/
 	align-items: center;
 	overflow: hidden;
 	width: 85%;
 	
 }
+
 .img_visible,
 .img_invisible{
 	display: flex;
@@ -215,13 +208,58 @@
 }
 
 .movie-btn:hover{
-	background-color: dimgray;
+	background-color: #2C3E50 ;
 }
 
 
-
 footer{
+	background-color: #2C3E50 ;
 	margin-top: 40px;
+	height: 50px;
+}
+
+
+@media screen and (max-width: 800px){
+
+	.nav{
+		flex-direction: column;
+	}
+
+	#best-movie{
+		flex-direction: column;	
+	}
+
+	#best-movie__img{
+		margin-bottom: 20px;
+		
+
+	}
+
+	.movie-img{
+		width: 50%;
+		margin-top: 5px;
+		/*height: 200px;*/
+
+	}
+	#best-movie__abstract{
+		width: 200px;
+
+	}
+
+	.img_visible,
+    .img_invisible{
+	flex-wrap: wrap;
+	
+    }
+
+    #popup-movie{
+    	font-size: 0.7em;
+    }
+
+    #popup-movie__img{
+    	width: 100px;
+    	height: 100px;
+    }
 }
 
 
