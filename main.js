@@ -169,35 +169,41 @@ function addMoviesImg(data, id){
 	//console.log(data);
 	let elementParent = document.getElementById(id);
 	//console.log(bestMovieImg)
-	for (let i = 0; i < data.length - 1; i++){
-		if (data[i].imdb_score > 9.3){
-			elementParent.children[i].setAttribute("src", data[i].image_url);
-		}else{
-			elementParent.children[i].setAttribute("src", data[i+1].image_url);
-		}
-	}
+	for (let i = 0; i < data.length; i++){
+		elementParent.children[i].setAttribute("src", data[i].image_url);
+		elementParent.children[i].addEventListener("click", e => {
+			openPopup(elementParent.id);
+			httpRequest(data[i].id, fillPopup);
 
+
+			//fillPopup(elementParent.children[i]);
+			 //bestMovieTitle.innerHTML = document.getElementById(elementParent.id).offsetTop;
+		})
+	}
+		
 }
 
 //add movies images
 
-function getData(data){
+function getMovieVisible(data){
 	let movieData = data.results;
 	addMoviesImg(movieData, "top-rated_img_visible");
 }
 
-const topRatedMovieScore = "?imdb_score_min=9.3&imdb_score_max=9.6&page=2"
+const topRatedMovieVisibleScore = "?imdb_score_min=9.3&imdb_score_max=9.6&page=2"
 
-httpRequest(topRatedMovieScore, getData);
+httpRequest(topRatedMovieVisibleScore, getMovieVisible);
 
 
 
 //Event click right arrow
 
-function getBtnId(btn){
-	const btnId = document.getElementById(btn);
-	return btnId;
+function getMovieInvisible(data){
+	let movieData = data.results;
+	addMoviesImg(movieData, "top-rated_img_invisible");
 }
+
+const topRatedMovieInvisibleScore = "?imdb_score_min=9.3&imdb_score_max=9.6&page=3"
 
 const btnTopRatedR = getBtnId("top-rated_btnR")
 
@@ -209,16 +215,21 @@ btnTopRatedR.addEventListener("click", e => {
 	imagVisible.style.display = "none";
 	btnTopRatedR.style.display = "none";
 
+	httpRequest(topRatedMovieInvisibleScore, getMovieInvisible);
+
 	const btnTopRatedL = getBtnId("top-rated_btnL");
 	btnTopRatedL.style.display = "block";
 
 
-
 })
+
+
 
 //Event click left arrow
 
 const btnTopRatedL = getBtnId("top-rated_btnL")
+
+
 
 btnTopRatedL.addEventListener("click", e => {
 	const imagInvisible = document.getElementById("top-rated_img_invisible");
@@ -228,16 +239,13 @@ btnTopRatedL.addEventListener("click", e => {
 	imagVisible.style.display = "flex";
 	btnTopRatedL.style.display = "none";
 
+
 	const btnTopRatedR = getBtnId("top-rated_btnR");
 	btnTopRatedR.style.display = "block";
 
-	//console.log(imagVisible);
-	//console.log(imagVisible.style);
-
-
 })
 
-//httpRequest("?imdb_score=9.4", getLastChildImg);
+
 
 
 
