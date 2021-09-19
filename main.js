@@ -44,10 +44,10 @@ const getHttpRequest = function() {
 
 //function to send requests to the server
 
-function httpRequest(id, process){
+function httpRequest(uri, process) {
 	let xhr = getHttpRequest(); 
 
-	xhr.onreadystatechange = function(){
+	xhr.onreadystatechange = function() {
 		if (this.readyState === 4 && this.status === 200){
 			let data = xhr.response;
 			process(data);
@@ -55,13 +55,13 @@ function httpRequest(id, process){
 		} 
 	} 
 		
-	xhr.open("GET","http://localhost:8000/api/v1/titles/" + id, true );
+	xhr.open("GET","http://localhost:8000/api/v1/titles/" + uri, true );
 	xhr.responseType = "json";
 	xhr.send();
 }
 
 
-function getBtnId(btn){
+function getBtnId(btn) {
 	const btnId = document.getElementById(btn);
 	return btnId;
 }
@@ -75,7 +75,7 @@ const bestMovieImg = document.getElementById("best-movie__img");
 const bestMovieAbstract = document.getElementById("best-movie__abstract");
 
 
-let bestMovieScore = "?imdb_score_min=9.6"
+let bestMovieUri = "?imdb_score_min=9.6"
 
 
 function getBestMovieInfo(data) {
@@ -92,11 +92,11 @@ function setBestMovieInfo(data) {
 
 //query to retrieve the information of the best movie
 
-httpRequest(bestMovieScore,  getBestMovieInfo);
+httpRequest(bestMovieUri,  getBestMovieInfo);
 
 const bestMovieBtn = getBtnId("best-movie__btn");
 
-function bestMoviePoppup(data) {
+function bestMoviePopup(data) {
 	let bestMoviesData = data.results;
 	let bestMovieId = bestMoviesData[0].id;
 	httpRequest(bestMovieId, fillPopup);
@@ -106,22 +106,19 @@ function bestMoviePoppup(data) {
 
 bestMovieBtn.addEventListener("click", e => {
 	openPopup();
-	httpRequest(bestMovieScore, bestMoviePoppup);
+	httpRequest(bestMovieUri, bestMoviePopup);
 })
 
 
 
 // POPUP
 
-function openPopup(){
-	
+function openPopup() {
 	document.getElementById("overlay").style.display = "flex";
 	document.getElementById("overlay").style.zIndex = "1";
 
 	document.getElementById("popup-movie").style.top = 20 + "%" ;
 	document.getElementById("popup-movie").style.left = 20 + "%" ;
-
-
 }
 
 function fillPopup(movie) {
@@ -150,20 +147,22 @@ function fillPopup(movie) {
     movieActors.innerHTML = "Actors :"+" "+movie.actors;
     movieDuration.innerHTML = "Duration :"+" "+movie.duration;
     movieCountry.innerHTML = "Countires :"+" "+movie.countries;
-    movieBoxOffice.innerHTML = "Box office :"+" "+movie.budget+" "+movie.budget_currency;
-
-    
+    movieBoxOffice.innerHTML = "Box office :"+" "+movie.budget+" "+movie.budget_currency;   
 }
 
 function closePopup() {
-    document.getElementById("overlay").style.display = "none";
-    
+    document.getElementById("overlay").style.display = "none";   
 }
 
+const btnPopup = getBtnId("popup-movie__btn");
+
+btnPopup.addEventListener("click", e => {
+	closePopup();
+})
 
 //FUNCTION ADD MOVIES IMAGES
 
-function addMoviesImg(data, id){
+function addMoviesImg(data, id) {
 	let elementParent = document.getElementById(id);
 	for (let i = 0; i < data.length; i++){
 		elementParent.children[i].setAttribute("src", data[i].image_url);
@@ -177,8 +176,7 @@ function addMoviesImg(data, id){
 
 //FUNCTION EVENT CLICK BUTTON
 
-function rigthClick(imagvisible, imaginvisible, btnL, btnR){
-
+function rigthClick(imagvisible, imaginvisible, btnL, btnR) {
 	const imagVisible = document.getElementById(imagvisible);
 	const imagInvisible = document.getElementById(imaginvisible);
 
@@ -192,8 +190,7 @@ function rigthClick(imagvisible, imaginvisible, btnL, btnR){
 	movieBtnL.style.display = "block";
 }
 
-function leftClick(imagvisible, imaginvisible, btnL, btnR){
-
+function leftClick(imagvisible, imaginvisible, btnL, btnR) {
 	const imagVisible = document.getElementById(imagvisible);
 	const imagInvisible = document.getElementById(imaginvisible);
 
@@ -212,22 +209,22 @@ function leftClick(imagvisible, imaginvisible, btnL, btnR){
 
 //add movies images
 
-function getTopMovieVisible(data){
+function getTopMovieVisible(data) {
 	let movieData = data.results;
 	addMoviesImg(movieData, "top-rated_img_visible");
 }
 
-const topRatedMovieVisibleScore = "?imdb_score_min=9.3&imdb_score_max=9.6&page=2"
+const topRatedMovieVisibleUri = "?imdb_score_min=9.3&imdb_score_max=9.6&page=2"
 
-httpRequest(topRatedMovieVisibleScore, getTopMovieVisible);
+httpRequest(topRatedMovieVisibleUri, getTopMovieVisible);
 
 
-function getTopMovieInvisible(data){
+function getTopMovieInvisible(data) {
 	let movieData = data.results;
 	addMoviesImg(movieData, "top-rated_img_invisible");
 }
 
-const topRatedMovieInvisibleScore = "?imdb_score_min=9.3&imdb_score_max=9.6&page=3"
+const topRatedMovieInvisibleUri = "?imdb_score_min=9.3&imdb_score_max=9.6&page=3"
 
 //event click right arrow
 
@@ -235,7 +232,7 @@ const btnTopRatedR = getBtnId("top-rated_btnR")
 
 btnTopRatedR.addEventListener("click", e => {
 	rigthClick("top-rated_img_visible", "top-rated_img_invisible", "top-rated_btnL", "top-rated_btnR");
-	httpRequest(topRatedMovieInvisibleScore, getTopMovieInvisible);
+	httpRequest(topRatedMovieInvisibleUri, getTopMovieInvisible);
 })
 
 
@@ -252,29 +249,30 @@ btnTopRatedL.addEventListener("click", e => {
 
 //add movies images
 
-const actionMovieVisible = "?genre_contains=action&imdb_score_min=8&imdb_score_max=9";
+const actionMovieVisibleUri = "?genre_contains=action&imdb_score_min=8&imdb_score_max=9";
 
-function getActionMovieVisible(data){
+function getActionMovieVisible(data) {
 	let movieData = data.results;
 	addMoviesImg(movieData, "action_img_visible");
 }
 
-httpRequest(actionMovieVisible, getActionMovieVisible);
+httpRequest(actionMovieVisibleUri, getActionMovieVisible);
 
 
-const actionMovieInvisible = "?genre_contains=action&imdb_score_min=8&imdb_score_max=9&page=2"
+const actionMovieInvisibleUri = "?genre_contains=action&imdb_score_min=8&imdb_score_max=9&page=2"
 
-function getActionMovieInvisible(data){
+function getActionMovieInvisible(data) {
 	let movieData = data.results;
 	addMoviesImg(movieData, "action_img_invisible");
 }
+
  //event click right arrow
 
 const btnActionR = getBtnId("action_btnR")
 
 btnActionR.addEventListener("click", e => {
 	rigthClick("action_img_visible", "action_img_invisible", "action_btnL", "action_btnR");
-	httpRequest(actionMovieInvisible, getActionMovieInvisible);
+	httpRequest(actionMovieInvisibleUri, getActionMovieInvisible);
 })
 
  //event click left arrow
@@ -290,30 +288,30 @@ btnActionL.addEventListener("click", e => {
 
 //add movies images
 
-const comedyMovieVisible = "?genre_contains=comedy&imdb_score_min=8&imdb_score_max=9";
+const comedyMovieVisibleUri = "?genre_contains=comedy&imdb_score_min=8&imdb_score_max=9";
 
-function getComedyMovieVisible(data){
+function getComedyMovieVisible(data) {
 	let movieData = data.results;
 	addMoviesImg(movieData, "comedy_img_visible");
 }
 
-httpRequest(comedyMovieVisible, getComedyMovieVisible);
+httpRequest(comedyMovieVisibleUri, getComedyMovieVisible);
 
 
-function getComedyMovieInvisible(data){
+function getComedyMovieInvisible(data) {
 	let movieData = data.results;
 	addMoviesImg(movieData, "comedy_img_invisible");
 }
 
 //event click right arrow
 
-const comedyMovieInvisible = "?genre_contains=comedy&imdb_score_min=8&imdb_score_max=9&page=2"
+const comedyMovieInvisibleUri = "?genre_contains=comedy&imdb_score_min=8&imdb_score_max=9&page=2"
 
 const btnComedyR = getBtnId("comedy_btnR")
 
 btnComedyR.addEventListener("click", e => {
 	rigthClick("comedy_img_visible", "comedy_img_invisible", "comedy_btnL", "comedy_btnR");
-	httpRequest(comedyMovieInvisible, getComedyMovieInvisible);
+	httpRequest(comedyMovieInvisibleUri, getComedyMovieInvisible);
 })
 
 //event click left arrow
@@ -328,34 +326,35 @@ btnComedyL.addEventListener("click", e => {
 
 // ROMANCE
 
-
 //add movies images
 
-const romanceMovieVisible = "?genre_contains=romance&imdb_score_min=8&imdb_score_max=9";
+const romanceMovieVisibleUri = "?genre_contains=romance&imdb_score_min=8&imdb_score_max=9";
 
-function getRomanceMovieVisible(data){
+function getRomanceMovieVisible(data) {
 	let movieData = data.results;
 	addMoviesImg(movieData, "romance_img_visible");
 }
 
-httpRequest(romanceMovieVisible, getRomanceMovieVisible);
+httpRequest(romanceMovieVisibleUri, getRomanceMovieVisible);
 
 
-function getRomanceMovieInvisible(data){
+function getRomanceMovieInvisible(data) {
 	let movieData = data.results;
 	addMoviesImg(movieData, "romance_img_invisible");
 }
 
 //event click right arrow
 
-const romanceMovieInvisible = "?genre_contains=romance&imdb_score_min=8&imdb_score_max=9&page=2"
+const romanceMovieInvisibleUri = "?genre_contains=romance&imdb_score_min=8&imdb_score_max=9&page=2"
 
 const btnRomanceR = getBtnId("romance_btnR")
 
 btnRomanceR.addEventListener("click", e => {
 	rigthClick("romance_img_visible", "romance_img_invisible", "romance_btnL", "romance_btnR");
-	httpRequest(romanceMovieInvisible, getRomanceMovieInvisible);
+	httpRequest(romanceMovieInvisibleUri, getRomanceMovieInvisible);
 })
+
+//event click left arrow
 
 const btnRomanceL = getBtnId("romance_btnL")
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +13,18 @@
 			<a href="#" class="logo">JustStreamIt</a>
 			<ul class="nav">
 				<li><a href="#">Accueil</a></li>
-				<li><a href="#">Catégories</a></li>	
+				<li class="menu-category"><a href="#">Catégories</a>
+					<ul class="submenu">
+						<li><a href="#level1">Films les mieux notés</a></li>
+						<li><a href="#level2">Action</a></li>
+						<li><a href="#level3">Comedie</a></li>
+						<li><a href="#level4">Romance</a></li>
+					</ul>
+				</li>	
 			</ul>
 		</header>
 		
-		<div id="best-movie">
+		<section id="best-movie">
 			<h2>MEILLEUR <br>FILM</h2>
 			<div id="best-movie__info">
 				<h3 id="best-movie__title"></h3>
@@ -25,35 +32,35 @@
 				<p id="best-movie__abstract"></p>
 			</div>
 			<img id="best-movie__img"  src="" alt="best movie image">
-		</div>
-		<div id="overlay">
+		</section>
+	
+		<section id="overlay">
 			<div id="popup-movie">
 				<img id="popup-movie__img" src="" alt="Movie image">
 				<ul id="popup-movie__detail">
 					<li id="popup-movie__title"></li>
 					<li id="popup-movie__abstract"></li>
-					<li id="popup-movie__genre">Genres :</li>
-					<li id="popup-movie__date">Date published :</li>
-					<li id="popup-movie__rated">Rated :</li>
-					<li id="popup-movie__imdb">Imdb score</li>
-					<li id="popup-movie__director">Directors :</li>
-					<li id="popup-movie__actors">Actors :</li>
-					<li id="popup-movie__duration">Duration :</li>
-					<li id="popup-movie__country">Countries :</li>
-					<li id="popup-movie__box">Box office :</li>
+					<li id="popup-movie__genre"></li>
+					<li id="popup-movie__date"></li>
+					<li id="popup-movie__rated"></li>
+					<li id="popup-movie__imdb"></li>
+					<li id="popup-movie__director"></li>
+					<li id="popup-movie__actors"></li>
+					<li id="popup-movie__duration"></li>
+					<li id="popup-movie__country"></li>
+					<li id="popup-movie__box"></li>
 				</ul>
-				<button id="popup-movie__btn" onclick="closePopup()">X</button>
+				<button id="popup-movie__btn">X</button>
 			</div>
-		
-		</div>
-		<div class="title">
+		</section>
+
+		<div id="level1" class="title">
 			<div></div>
-			<h2 >FILM LES MIEUX NOTES</h2>
+			<h2 >FILMS LES MIEUX NOTES</h2>
 			<div></div>
 		</div>
 		
-		<div class="category" id="top-rated">
-			
+		<section id="top-rated" class="category" >
 			<button id="top-rated_btnL" class="movie-btn btnL"><</button>
 			<div class="container">
 				<div id="top-rated_img_visible" class="img_visible">
@@ -70,15 +77,15 @@
 				
 			</div>
 			<button id="top-rated_btnR" class="movie-btn btnR" >></button>	
-		</div>
+		</section>
 
-		<div class="title">
+		<div id="level2" class="title">
 			<div></div>
 			<h2 >ACTION</h2>
 			<div></div>
 		</div>
 		
-		<div class="category" id="action">
+		<section id="action" class="category" >
 			<button id="action_btnL" class="movie-btn btnL"><</button>
 			<div class="container">
 				<div id="action_img_visible" class="img_visible">
@@ -95,15 +102,15 @@
 				
 		    </div>
 		    <button id="action_btnR" class="movie-btn btnR">></button>
-		</div>
+		</section>
 
-		<div class="title">
+		<div id="level3" class="title">
 			<div></div>
 			<h2 >COMEDIE</h2>
 			<div></div>
 		</div>
 		
-		<div class="category" id="comedy">
+		<section id="comedy" class="category" >
 			<button id="comedy_btnL" class="movie-btn btnL"><</button>
 			<div class="container">
 				<div id="comedy_img_visible" class="img_visible">
@@ -120,15 +127,15 @@
 				
 		    </div>
 		    <button id="comedy_btnR" class="movie-btn btnR">></button>
-		</div>
+		</section>
 
-		<div class="title">
+		<div id="level4" class="title">
 			<div></div>
 			<h2 >ROMANCE</h2>
 			<div></div>
 		</div>
 		
-		<div class="category" id="romance">
+		<section id="romance" class="category" >
 			<button id="romance_btnL" class="movie-btn btnL"><</button>
 			<div class="container">
 				<div id="romance_img_visible" class="img_visible">
@@ -145,12 +152,11 @@
 				
 		    </div>
 		    <button id="romance_btnR" class="movie-btn btnR">></button>
-		</div>
+		</section>
 		<footer>
 			
-		</footer>
-
-		
+			
+	    </footer>
 	</div>
 
 <script type="text/javascript" src="main.js"></script>
