@@ -1,6 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lobster&display=swap');
 
+body {
+	/*margin: 0px;
+	padding: 0px;*/
+}
 
 #bloc-page {
 	width: 60%;
@@ -48,11 +52,11 @@ h2 {
 }
 
 .submenu {
-	display: none;	
+	display: none;
+	
 }
 
 .submenu li {
-	border: #F0F3F4 1px solid;
 	margin-left: -10px;
 }
 
@@ -109,6 +113,7 @@ h2 {
 
 /*POPUP*/
 
+
 #overlay {
 	position: fixed;
 	left: 0px;
@@ -117,6 +122,7 @@ h2 {
 	width: 100%;
 	height: 100%;
 	display: none;
+
 }
 
 #popup-movie {
@@ -152,11 +158,9 @@ h2 {
 	color:#FFFFFF ;
 	border: none;
 	font-weight: bold;
-	margin-bottom: 20px;	
+	margin-bottom: 20px;
+	
 }
-
-// MOVIES CATEGORIES
-
 
 .title {
 	display: flex;
@@ -196,6 +200,7 @@ h2 {
 	position: relative;	
 }
 
+
 .img_invisible {
 	display: none;
 }
@@ -209,6 +214,7 @@ h2 {
 
 .movie-img:hover {
 	border-radius: 20px;
+	transition-duration:0.5s;
 	border: dimgray 0.5px solid;	
 }
 
@@ -221,8 +227,10 @@ h2 {
 }
 
 .movie-btn:hover {
-	background-color: #2C3E50 ;
+	background-color: #2C3E50;
+	transition-duration:0.5s;
 }
+
 
 footer {
 	margin-top: 40px;	
@@ -246,6 +254,7 @@ footer {
 	.movie-img {
 		width: 50%;
 		margin-top: 5px;
+		
 	}
 
 	#best-movie__abstract {
@@ -265,6 +274,7 @@ footer {
     	width: 100px;
     	height: 100px;
     }
+
 
 }
 
