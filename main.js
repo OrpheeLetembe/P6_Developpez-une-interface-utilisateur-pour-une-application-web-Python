@@ -164,8 +164,8 @@ btnPopup.addEventListener("click", e => {
 
 function addMoviesImg(data, id) {
 	let elementParent = document.getElementById(id);
-	for (let i = 0; i < data.length; i++){
-		elementParent.children[i].setAttribute("src", data[i].image_url);
+	for (let i = 0; i < elementParent.children.length; i++){
+		elementParent.children[i].setAttribute("src", data[i].image_url); 
 		elementParent.children[i].addEventListener("click", e => {
 			openPopup();
 			httpRequest(data[i].id, fillPopup);	
@@ -174,7 +174,7 @@ function addMoviesImg(data, id) {
 		
 }
 
-//FUNCTION EVENT CLICK BUTTON
+//FUNCTION EVENT CLICK BUTTON TO DISPLAY MOVIES
 
 function rigthClick(imagvisible, imaginvisible, btnL, btnR) {
 	const imagVisible = document.getElementById(imagvisible);
