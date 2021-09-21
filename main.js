@@ -147,7 +147,7 @@ function fillPopup(movie) {
     movieActors.innerHTML = "Actors :"+" "+movie.actors;
     movieDuration.innerHTML = "Duration :"+" "+movie.duration;
     movieCountry.innerHTML = "Countires :"+" "+movie.countries;
-    movieBoxOffice.innerHTML = "Box office :"+" "+movie.budget+" "+movie.budget_currency;   
+    movieBoxOffice.innerHTML = "Box office :"+" "+movie.worldwide_gross_icome; 
 }
 
 function closePopup() {
