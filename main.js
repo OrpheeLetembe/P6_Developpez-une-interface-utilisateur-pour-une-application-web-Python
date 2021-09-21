@@ -139,15 +139,15 @@ function fillPopup(movie) {
     movieImg.setAttribute("src", movie.image_url);
     movieTitle.innerHTML = movie.title;
     movieAbstract.innerHTML = movie.long_description; 
-    movieGenre.innerHTML = "Genres :"+" "+ movie.genres;
+    movieGenre.innerHTML = "Genres :" + " " + movie.genres;
     movieDate.innerHTML = "Date published :"+" "+ movie.date_published;
-    movieRate.innerHTML = "Rated :"+" "+movie.rated;
-    movieImdb.innerHTML = "Imdn score :"+" "+movie.imdb_score;
+    movieRate.innerHTML = "Rated :" + " " + movie.rated;
+    movieImdb.innerHTML = "Imdn score :" + " " + movie.imdb_score;
     movieDirector.innerHTML = "Directors :"+" "+movie.directors;
-    movieActors.innerHTML = "Actors :"+" "+movie.actors;
-    movieDuration.innerHTML = "Duration :"+" "+movie.duration;
-    movieCountry.innerHTML = "Countires :"+" "+movie.countries;
-    movieBoxOffice.innerHTML = "Box office :"+" "+movie.worldwide_gross_icome; 
+    movieActors.innerHTML = "Actors :" + " " + movie.actors;
+    movieDuration.innerHTML = "Duration :" + " " + movie.duration + " mn";
+    movieCountry.innerHTML = "Countires :" +" " + movie.countries;
+    movieBoxOffice.innerHTML = "Box office :" + " " + movie.worldwide_gross_icome; 
 }
 
 function closePopup() {
