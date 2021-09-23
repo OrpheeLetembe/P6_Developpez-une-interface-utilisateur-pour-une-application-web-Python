@@ -70,7 +70,7 @@ function getBtnId(btn) {
 // BEST MOVIE
 
 const bestMovie = document.getElementById("best-movie");
-const bestMovieTitle = document.getElementById("best-movie__title");
+const bestMovieTitle = document.querySelector("h3");
 const bestMovieImg = document.getElementById("best-movie__img");
 const bestMovieAbstract = document.getElementById("best-movie__abstract");
 

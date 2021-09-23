@@ -1,10 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lobster&display=swap');
 
-body {
-	/*margin: 0px;
-	padding: 0px;*/
-}
+
 
 #bloc-page {
 	width: 60%;
@@ -12,7 +9,7 @@ body {
 	padding-top: 100px;
 }
 
-h2 {
+h2, h3 {
 	font-family: 'Fjalla One', sans-serif;
 }
 
@@ -24,7 +21,7 @@ h2 {
 	align-items: center;
 	background-color: #2C3E50 ;
 	margin-bottom: 20px;
-	border: black 1 solid;
+	border: black 1px solid;
 	position: fixed;
 	width: 60.5%;
 	height: 100px;
