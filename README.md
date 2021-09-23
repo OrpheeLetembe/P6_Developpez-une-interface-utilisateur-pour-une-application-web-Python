@@ -24,7 +24,7 @@ La fenêtre modale doit comprendre les données suivantes :
 * Le résumé du film
 
 Un bouton devra permettre la fermeture de la fenêtre modale.
-La gestion des événements de la page web est réalisée avec l’utilisation de vanilla JavaScript. La récupération des données des films depuis l’API (OCMovies-API), mis à disposition par JustStreamIt, a été réalisée à l’aide de requêtes AJAX.
+La gestion des événements de la page web est réalisée avec l’utilisation de vanilla JavaScript et la récupération des données des films depuis l’API (OCMovies-API), mis à disposition par JustStreamIt, a été réalisée à l’aide de requêtes AJAX.
 
 # Installation API :
 
